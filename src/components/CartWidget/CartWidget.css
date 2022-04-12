@@ -1,0 +1,14 @@
+.Cart {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    right: 40px;
+}
+.Cart img {
+    height: 18px;
+    margin-right: 8px;
+}
+.Cart .Counter {
+    font-size: 14px;
+    font-weight: 400;
+}

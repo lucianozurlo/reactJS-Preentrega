@@ -1,0 +1,18 @@
+.detail {
+    margin: 50px 0 200px;
+    flex-direction: row;
+}
+
+.detail picture {
+    margin-right: 50px;
+}
+
+.detail div {
+    text-align: left;
+}
+
+.description {
+    font-weight: 300;
+    font-size: 18px;
+    margin: 40px 0;
+}
