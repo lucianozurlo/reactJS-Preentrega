@@ -9,10 +9,11 @@
 
 .detail div {
     text-align: left;
+    width: 250px;
 }
 
 .description {
     font-weight: 300;
-    font-size: 18px;
-    margin: 40px 0;
+    font-size: 15px;
+    margin-bottom: 30px;
 }

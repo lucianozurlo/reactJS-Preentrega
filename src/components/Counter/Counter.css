@@ -1,0 +1,39 @@
+.base {
+    width: 300px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.count {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, .1);
+    height: 30px;
+    border-radius: 15px;
+}
+
+.count button {
+    width: 40px;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin: 0;
+    font-weight: 700;
+}
+
+.count button:hover {
+    color: #ff7b00 !important
+}
+
+.count p {
+    margin: 0;
+}

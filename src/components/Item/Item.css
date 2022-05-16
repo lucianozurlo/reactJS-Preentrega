@@ -6,7 +6,7 @@ section {
 }
 
 picture img {
-    width: 300px;
+    width: 400px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 25%);
 }
@@ -14,20 +14,21 @@ picture img {
 .band {
     font-weight: 700;
     font-size: 22px;
-    margin: 10px 0 0;
+    margin: 15px 0 0;
 }
 
 .album {
     font-weight: 200;
     font-size: 20px;
-    margin: 5px 0 0;
+    margin: 0;
 }
 
 .price {
     text-align: center !important;
     font-size: 18px;
     font-weight: 700;
-    padding: 10px;
+    margin-top: 12px;
+    padding: 6px 10px 5px;
     background-color: white;
     color: #282c34;
     border-radius: 6px;
@@ -36,7 +37,11 @@ picture img {
 .stock {
     font-size: 12px;
     font-weight: 200;
-    margin: 0 auto 40px;
+    margin: 0 auto 20px;
+}
+
+.stock.empty {
+    color: red
 }
 
 .stock span {
@@ -63,7 +68,7 @@ a.detalles {
     align-content: center;
     transition: all .2s ease-in-out;
     border: 1px solid #fff;
-    padding: 10px 0px;
+    padding: 8px 0px;
     border-radius: 20px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0);

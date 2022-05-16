@@ -1,28 +1,55 @@
 import { useState, useEffect } from 'react';
-import { getProducts } from '../../asyncmock'
-import ItemList from '../ItemList/ItemList';
-import { useParams } from 'react-router-dom';
+import { getDocs, collection, query, where, orderBy } from 'firebase/firestore'; import { useParams } from 'react-router-dom'
+import ItemList from '../ItemList/ItemList'
+import { getProducts } from '../../services/firebase/firestore'
+import { useAsync } from '../../hooks/useAsync'
+import { firestoreDb } from '../../services/firebase';
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
 
     const [products, setProducts] = useState([])
-    const { categoryId } = useParams();
+    const [loading, setLoading] = useState(true)
+
+    const { categoryId } = useParams()
+
+    useAsync(
+        setLoading,
+        () => getProducts(categoryId),
+        setProducts,
+        () => console.log('Error en itemListContainer')
+        [categoryId]
+    )
 
     useEffect(() => {
-        getProducts(categoryId)
-            .then(prods => {
-                setProducts(prods)
-            })
-            .catch(error => {
-                console.log(error)
+        const collectionRef = categoryId
+            ? query(collection(firestoreDb, 'products'),
+                where('category', '==', categoryId))
+            : query(collection(firestoreDb, 'products'),
+                orderBy('band', 'asc'))
+
+        getDocs(collectionRef)
+            .then(response => {
+                const products = response.docs.map(doc => {
+                    return { id: doc.id, ...doc.data() }
+                })
+                setProducts(products)
             })
     }, [categoryId])
 
+
+    if (loading) {
+        return (
+            <h1>Cargando...</h1>
+        )
+    }
+
+    if (products.length === 0) {
+        return <h1>No hay productos</h1>
+    }
+
     return (
         <div>
-            <h1>{props.greeting}</h1>
             <ItemList products={products} />
-
         </div>
     )
 }
